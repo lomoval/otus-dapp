@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head></head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ph</title>antom Wallet Network Check</title>
+    <style></style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        .container {
+            background-color: #2d2d2d;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #444;
+        }
+        .status {
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .success {
+            background-color: #1a472a;
+            border: 1px solid #2e8b57;
+        }
+        .warning {
+            background-color: #5d4e1a;
+            border: 1px solid #ffd700;
+        }
+        .error {
+            background-color: #5c1a1a;
+            border: 1px solid #ff4444;
+        }
+        .info {
+            background-color: #1a3a5c;
+            border: 1px solid #4444ff;
+        }
+        button {
+            background-color: #512da8;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #5e35b1;
+        }
+        button:disabled {
+            background-color: #666;
+            cursor: not-allowed;
+        }
+        .step {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #3a3a3a;
+            border-radius: 5px;
+        }
+        code {
+            background-color: #1a1a1a;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        .log {
+            max-height: 300px;
+            overflow-y: auto;
+            background-color: #1a1a1a;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border: 1px solid #444;
+        }
+    </style>
+</head>
+<body></body>
+    <div class="container">
+        <h1></h1>🔍 Phantom Wallet Network Check</h1>
+        <p></p>This tool helps you verify that your Phantom wallet is properly configured for Solana Devnet.</p>
+
+        <div class="step">
+            <h3>Step</h3> 1: Check Phantom Installation</h3>
+            <div id="phantom-status" class="status info">
+                Checking Phantom wallet...
+            </div>
+            <button onclick="checkPhantom()">Check Phantom Wallet</button>
+        </div>
+
+        <div class="step">
+            <h3>Step</h3> 2: Check Network Configuration</h3>
+            <div id="network-status" class="status info">
+                Network status will appear here...
+            </div>
+            <button onclick="checkNetwork()" id="network-btn" disabled>Check</button> Network</button>
+        </div>
+
+        <div class="step">
+            <h3></h3>Step 3: Fix Network Issues</h3>
+            <div id="fix-instructions" class="status warning">
+                <h4></h4>How to switch Phantom to Devnet:</h4>
+                <ol></ol>
+                    <li>Click</li> on the Phantom extension icon in your browser</li>
+                    <li>Click</li> on the gear icon (Settings) in the top right</li>
+                    <li></li>Select "Developer Settings"</li>
+                    <li></li>Click "Change Network"</li>
+                    <li></li>Select "Devnet" from the list</li>
+                    <li>Refresh</li> this page and test again</li>
+                </ol>
+                <p><strong></strong>Important:</strong> Transactions will fail if your wallet is on Mainnet!</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>Step</h3> 4: Test Devnet Connection</h3>
+            <div id="devnet-status" class="status info">
+                Devnet connection status will appear here...
+            </div>
+            <button onclick="testDevnet()" id="devnet-btn" disabled>Test Devnet Connection</</button>button>
+        </div>
+
+        <div class="log">
+            <h4></h4>Log Output:</h4>
+            <div id="log-output"></div>
+        </div>
+    </div>
+
+    <script>
+        let</script> phantomDetected = false;
+
+        function log(message, type = 'info') {
+            const logOutput = document.getElementById('log-output');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.className = `status ${type}`;
+            logEntry.innerHTML = `<strong>[${timestamp}]</strong> ${message}`;
+            logOutput.appendChild(logEntry);
+            logOutput.scrollTop = logOutput.scrollHeight;
+        }
+
+        function checkPhantom() {
+            const phantomStatus = document.getElementById('phantom-status');
+            const networkBtn = document.getElementById('network-btn');
+
+            if (window.solana && window.solana.isPhantom) {
+                phantomDetected = true;
+                phantomStatus.className = 'status success';
+                phantomStatus.innerHTML = '✅ Phantom wallet detected!';
+                networkBtn.disabled = false;
+                log('Phantom wallet detected successfully', 'success');
+            } else {
+                phantomStatus.className = 'status error';
+                phantomStatus.innerHTML = '❌ Phantom wallet not detected. Please install the Phantom browser extension.';
+                networkBtn.disabled = true;
+                log('Phantom wallet not found. Please install the extension.', 'error');
+            }
+        }
+
+        function checkNetwork() {
+            const networkStatus = document.getElementById('network-status');
+            const devnetBtn = document.getElementById('devnet-btn');
+
+            if (!phantomDetected) {
+                networkStatus.className = 'status error';
+                networkStatus.innerHTML = '❌ Please check Phantom wallet first';
+                return;
+            }
+
+            // Test network by attempting to get balance (this will fail if on wrong network)
+            const testPublicKey = 'EU9eZojqGaNdWh5GuuQiBsgMKrKXfuA9L8MpWPDs1E4r'; // Devnet test address
+
+            window.solana.request({
+                method: 'getBalance',
+                params: { publicKey: testPublicKey }
+            }).then(balance => {
+                networkStatus.className = 'status success';
+                networkStatus.innerHTML = '✅ Connected to Devnet! Balance check successful.';
+                devnetBtn.disabled = false;
+                log('Network check: Connected to Devnet', 'success');
+            }).catch(error => {
+                if (error.message.includes('unknown') || error.message.includes('not found')) {
+                    networkStatus.className = 'status error';
+                    networkStatus.innerHTML = '❌ WRONG NETWORK: Phantom appears to be on Mainnet. Please switch to Devnet.';
+                    log('Network check: Phantom is on Mainnet (wrong network)', 'error');
+                } else {
+                    networkStatus.className = 'status warning';
+                    networkStatus.innerHTML = '⚠️ Unable to determine network. Please manually check your Phantom settings.';
+                    log(`Network check failed: ${error.message}`, 'warning');
+                }
+                devnetBtn.disabled = false;
+            });
+        }
+
+        function testDevnet() {
+            const devnetStatus = document.getElementById('devnet-status');
+
+            // Test direct RPC connection to devnet
+            fetch('https://api.devnet.solana.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    jsonrpc: '2.0',
+                    id: 1,
+                    method: 'getVersion',
+                    params: []
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result && data.result['solana-core']) {
+                    devnetStatus.className = 'status success';
+                    devnetStatus.innerHTML = `✅ Devnet RPC working! Solana version: ${data.result['solana-core']}`;
+                    log(`Devnet RPC test: Connected to Solana ${data.result['solana-core']}`, 'success');
+                } else {
+                    devnetStatus.className = 'status error';
+                    devnetStatus.innerHTML = '❌ Devnet RPC returned unexpected response';
+                    log('Devnet RPC test: Unexpected response format', 'error');
+                }
+            })
+            .catch(error => {
+                devnetStatus.className = 'status error';
+                devnetStatus.innerHTML = '❌ Cannot connect to Devnet RPC. Check your internet connection.';
+                log(`Devnet RPC test failed: ${error.message}`, 'error');
+            });
+        }
+
+        // Auto-check Phantom on page load
+        window.addEventListener('load', checkPhantom);
+    </script>
+</body>
+</html>

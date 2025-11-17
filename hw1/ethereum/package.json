@@ -1,0 +1,39 @@
+{
+  "name": "ethereum-simple-storage",
+  "version": "1.0.0",
+  "description": "Ethereum SimpleStorage contract for DApp demo",
+  "main": "index.js",
+  "scripts": {
+    "compile": "npx hardhat compile",
+    "deploy": "npx hardhat run scripts/deploy.js --network sepolia",
+    "test": "npx hardhat test",
+    "node": "npx hardhat node",
+    "deploy-local": "npx hardhat run scripts/deploy.js --network localhost"
+  },
+  "keywords": [
+    "ethereum",
+    "solidity",
+    "smart-contract",
+    "dapp",
+    "blockchain"
+  ],
+  "author": "DApp Course Instructor",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@typechain/ethers-v6": "^0.5.1",
+    "@typechain/hardhat": "^9.1.0",
+    "@types/chai": "^4.3.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^24.9.2",
+    "hardhat": "^2.27.0",
+    "solc": "^0.8.19",
+    "ts-node": "^10.9.2",
+    "typechain": "^8.3.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.0",
+    "dotenv": "^17.2.2"
+  }
+}
