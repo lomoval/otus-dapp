@@ -1,0 +1,2 @@
+export const SIMPLE_STORAGE_ADDRESS =
+  "EQBgiGdy8BWfZAycDbeflI0fKO142zIo4FOE2jG5ZhXBK3ud";
