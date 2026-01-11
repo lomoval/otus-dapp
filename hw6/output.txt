@@ -1,0 +1,63 @@
+=== Общая информация ===
+Текущий номер блока: 0n
+Количество пиров: 7n
+Статус синхронизации: 0x0/0x0
+Данные синхронизации:  {
+  currentBlock: '0x0',
+  healedBytecodeBytes: '0x0',
+  healedBytecodes: '0x0',
+  healedTrienodeBytes: '0x0',
+  healedTrienodes: '0x0',
+  healingBytecode: '0x0',
+  healingTrienodes: '0x0',
+  highestBlock: '0x0',
+  startingBlock: '0x0',
+  stateIndexRemaining: '0x0',
+  syncedAccountBytes: '0x0',
+  syncedAccounts: '0x0',
+  syncedBytecodeBytes: '0x0',
+  syncedBytecodes: '0x0',
+  syncedStorage: '0x0',
+  syncedStorageBytes: '0x0',
+  txIndexFinishedBlocks: '0x0',
+  txIndexRemainingBlocks: '0x1'
+}
+Текущая цена газа (wei): 1001000000n
+Текущая цена газа (gwei): 1.001
+
+=== Последний блок ===
+Хэш блока: 0x25a5cc106eea7138acab33231d7160d69cb777ee0c2c553fcddf5138993e6dd9
+Временная метка: 2021-10-03T13:24:41.000Z
+Количество транзакций: 0
+
+=== Общая информация ===
+Текущий номер блока: 10022111n
+Количество пиров: 14n
+Статус синхронизации: узел синхронизирован
+Текущая цена газа (wei): 1051495n
+Текущая цена газа (gwei): 0.001051495
+
+=== Последний блок ===
+Хэш блока: 0xdd31307d4e7499a84c5734bb2243168103f502fafe06db07041c2c71c85848c4
+Временная метка: 2026-01-11T13:45:00.000Z
+Количество транзакций: 74
+
+=== 3 транзакции из блока ===
+
+Транзакция 1:
+Хэш: 0x8f5358feb76f2699b8990a89bfdcf30de68b45ce997624142ddc777cf2fdf8dc
+Отправитель: 0x79a09f6d48262a3dcbc5a0cfbdda79db30285801
+Получатель: 0x72325e283176a31f96cdc664d339d11e4b3b9769
+Сумма перевода (ETH): 0
+
+Транзакция 2:
+Хэш: 0xfa1b780aff00c44e67e3f09ad6bde4c1e903ab46b1976ad2f747de316429aac0
+Отправитель: 0x6cc9397c3b38739dacbfaa68ead5f5d77ba5f455
+Получатель: 0x5e8c18e9b222e90dd74308a43e5e4a1549b32b9b
+Сумма перевода (ETH): 2.47402498
+
+Транзакция 3:
+Хэш: 0x1d054f123d542b8cff4ae4ebcbf49654b6d46ece130fa7663140315180deba50
+Отправитель: 0xb1842bae3c669dcfd305dd8ade0ecc630c165273
+Получатель: 0x79f685fab0d127708d8f1f4669fa77782c4a4e9c
+Сумма перевода (ETH): 0
