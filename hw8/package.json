@@ -1,0 +1,8 @@
+{
+  "type": "module",
+  "scripts": {
+    "last-block": "node last-block.js",
+    "balance": "node balance.js",
+    "monitoring": "node monitoring.js"
+  }
+}
