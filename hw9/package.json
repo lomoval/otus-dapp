@@ -1,0 +1,12 @@
+{
+  "type": "module",
+  "scripts": {
+    "info": "node info.js",
+    "last-block": "node last-block.js",
+    "balance": "node balance.js",
+    "monitoring": "node monitoring.js"
+  },
+  "dependencies": {
+    "tonweb": "^0.0.66"
+  }
+}
