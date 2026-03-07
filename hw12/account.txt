@@ -1,0 +1,5 @@
+pubkey: 9jTsJxUDyTXuHxfoso6YRR5VneKg6nUQq5k2wvUwb1nm
+=======================================================================
+Save this seed phrase and your BIP39 passphrase to recover your new keypair:
+cost proof divert kid junior thrive add erode venue column puzzle mango
+=======================================================================
